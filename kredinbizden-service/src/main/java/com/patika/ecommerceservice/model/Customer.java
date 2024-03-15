@@ -1,8 +1,9 @@
 package com.patika.ecommerceservice.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+import java.time.Period;  
 
 public class Customer {
     private String name;
@@ -10,12 +11,12 @@ public class Customer {
     private String phoneNumber;
     private String email;
     private String address;
-    private List<Order> orders;
+    private List<Integer> orders;
     private String password;
-    private Date birthdate;
+    private LocalDate birthdate;
     
     public Customer(String name, String surname, String phoneNumber, String email, String address, String password,
-            Date birthdate) {
+            LocalDate birthdate) {
         this.name = name;
         this.surname = surname;
         this.phoneNumber = phoneNumber;
@@ -56,11 +57,11 @@ public class Customer {
     public void setAddress(String address) {
         this.address = address;
     }
-    public List<Order> getOrders() {
+    public List<Integer> getOrders() {
         return orders;
     }
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    public void addOrder(int orderId) {
+        orders.add(orderId);
     }
     public String getPassword() {
         return password;
@@ -69,12 +70,17 @@ public class Customer {
         this.password = password;
     }
     
-    public Date getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
-    public void setBirthdate(Date birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
+    //genelde formlarda dogum tarihi doldurulması istenir ve yas otomatik hesaplanir, burada da ayni sistem uygulanmistir
+    public int getAge(){
+        return Period.between(this.birthdate, LocalDate.now()).getYears();
+    }
+
     @Override
     public String toString() {
         return "Customer [name=" + name + ", surname=" + surname + ", phoneNumber=" + phoneNumber + ", email=" + email

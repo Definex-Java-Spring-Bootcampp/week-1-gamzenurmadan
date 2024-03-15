@@ -96,4 +96,8 @@ public class User {
     public void setApplicationList(List<Application> applicationList) {
         this.applicationList = applicationList;
     }
+
+    public void addApplication(Application application){
+        applicationList.add(application);
+    }
 }

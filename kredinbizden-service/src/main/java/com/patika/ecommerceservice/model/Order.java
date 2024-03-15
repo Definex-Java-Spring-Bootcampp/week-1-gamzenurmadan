@@ -3,16 +3,19 @@ package com.patika.ecommerceservice.model;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class Order {
     private List<Product> productList;
     private Customer customer;
     private LocalDate orderDate;
+    private int orderId;
 
-    public Order(Customer customer, LocalDate orderDate) {
+    public Order(Customer customer) {
         this.productList = new ArrayList<>();
         this.customer = customer;
-        this.orderDate = orderDate;
+        this.orderDate = LocalDate.now();
+        this.orderId = ThreadLocalRandom.current().nextInt();
     }
     
     public List<Product> getProductList() {
@@ -30,8 +33,9 @@ public class Order {
     public LocalDate getOrderDate() {
         return orderDate;
     }
-    public void setOrderDate(LocalDate orderDate) {
-        this.orderDate = orderDate;
+
+    public int getOrderId(){
+        return orderId;
     }
 
     public void addProduct(Product product, int amount){
@@ -43,4 +47,9 @@ public class Order {
             }
         }
     }   
+    @Override
+    public String toString() {
+        return "Order [productList=" + productList + ", customer=" + customer + ", orderDate=" + orderDate
+                + ", orderId=" + orderId + "]";
+    }
 }
