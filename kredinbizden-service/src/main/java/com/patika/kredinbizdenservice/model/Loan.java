@@ -2,6 +2,8 @@ package com.patika.kredinbizdenservice.model;
 
 import java.math.BigDecimal;
 
+import com.patika.kredinbizdenservice.enums.LoanType;
+
 public abstract class Loan implements Product {
 
     private BigDecimal amount;
@@ -54,6 +56,8 @@ public abstract class Loan implements Product {
     public void setInterestRate(Double interestRate) {
         this.interestRate = interestRate;
     }
+
+    public abstract LoanType getLoanType();
 
     @Override
     public String toString() {

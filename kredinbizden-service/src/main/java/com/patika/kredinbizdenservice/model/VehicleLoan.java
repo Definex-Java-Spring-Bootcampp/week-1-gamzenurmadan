@@ -14,9 +14,8 @@ public class VehicleLoan extends Loan {
 
     }
 
-    public VehicleLoan(BigDecimal amount, Integer installment, Double interestRate, VehicleStatusType vehicleStatusType) {
+    public VehicleLoan(BigDecimal amount, Integer installment, Double interestRate) {
         super(amount, installment, interestRate);
-        this.vehicleStatusType = vehicleStatusType;
     }
 
     public LoanType getLoanType() {

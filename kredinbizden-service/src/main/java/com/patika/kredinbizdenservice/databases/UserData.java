@@ -18,7 +18,8 @@ public class UserData {
             return false;
         }
         String encryptedPassword = encryptPassword(user.getPassword());
-        userData.put(user.getEmail(), encryptedPassword);
+        user.setPassword(encryptedPassword);
+        userData.put(user.getEmail(), user.getPassword());
         return true;     
     }
 

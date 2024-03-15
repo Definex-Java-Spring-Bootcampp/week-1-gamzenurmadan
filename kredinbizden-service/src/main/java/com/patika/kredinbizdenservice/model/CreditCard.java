@@ -18,6 +18,10 @@ public class CreditCard implements Product{
         return fee;
     }
 
+    public CreditCard(BigDecimal fee){ //kampanyasız kart çıkabilir, kampanyalar sonradan eklenebilir
+        this.fee=fee;
+    }
+
     public void setFee(BigDecimal fee) {
         this.fee = fee;
     }
