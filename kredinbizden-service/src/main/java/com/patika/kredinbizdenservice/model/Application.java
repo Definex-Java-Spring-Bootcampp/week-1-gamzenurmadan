@@ -38,6 +38,14 @@ public class Application {
         this.applicationStatus = ApplicationStatus.INITIAL;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+    
     public Loan getLoan() {
         return loan;
     }

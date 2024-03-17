@@ -1,10 +1,10 @@
 package com.patika.kredinbizdenservice.model;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 public class User {
-
     private String name;
     private String surname;
     private LocalDate birthDate;
@@ -22,6 +22,7 @@ public class User {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.isActive = isActive;
+        this.applicationList = new ArrayList<>();
     }
 
     public User(String name, String surname, String email, String password, String phoneNumber, Boolean isActive) {
@@ -31,6 +32,7 @@ public class User {
         this.password = password;
         this.phoneNumber = phoneNumber;
         this.isActive = isActive;
+        this.applicationList = new ArrayList<>();
     }
 
     public String getName() {
@@ -100,4 +102,5 @@ public class User {
     public void addApplication(Application application){
         applicationList.add(application);
     }
+
 }

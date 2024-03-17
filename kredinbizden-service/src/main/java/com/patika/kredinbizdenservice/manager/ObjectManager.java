@@ -21,6 +21,7 @@ public class ObjectManager {
         campaigns = new ArrayList<>();
         applications = new ArrayList<>();
         users = new ArrayList<>();
+        loggedUsers = new UserData();
     }
 
     public static ObjectManager getInstance(){

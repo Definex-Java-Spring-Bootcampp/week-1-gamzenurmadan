@@ -1,6 +1,7 @@
 package com.patika.kredinbizdenservice.model;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CreditCard implements Product{
@@ -20,6 +21,7 @@ public class CreditCard implements Product{
 
     public CreditCard(BigDecimal fee){ //kampanyasız kart çıkabilir, kampanyalar sonradan eklenebilir
         this.fee=fee;
+        this.campaignList = new ArrayList<>();
     }
 
     public void setFee(BigDecimal fee) {
@@ -40,6 +42,10 @@ public class CreditCard implements Product{
 
     public void setBank(Bank bank) {
         this.bank = bank;
+    }
+
+    public void addCampaign(Campaign campaign){
+        campaignList.add(campaign);
     }
 
     @Override

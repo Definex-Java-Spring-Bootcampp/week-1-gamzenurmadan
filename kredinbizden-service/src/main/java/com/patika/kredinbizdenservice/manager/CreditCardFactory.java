@@ -2,22 +2,28 @@ package com.patika.kredinbizdenservice.manager;
 
 import com.patika.kredinbizdenservice.model.Campaign;
 import com.patika.kredinbizdenservice.model.CreditCard;
-import com.patika.kredinbizdenservice.model.Product;
 import java.util.List;
 import java.util.ArrayList;
 import java.math.BigDecimal;
 
-public class CreditCardFactory implements IProductFactory{
-    private BigDecimal fee;
+public class CreditCardFactory implements IProductFactory<CreditCard>{
     private List<Campaign> campaignList;
+    private List<CreditCard> creditCards;
 
-    public CreditCardFactory(BigDecimal fee) {
-        this.fee = fee;
-        this.campaignList = new ArrayList<>();
+    public CreditCardFactory() {
+        campaignList = new ArrayList<>();
+        this.creditCards = new ArrayList<>();
     }
     
     @Override
-    public Product createProduct() {
-        return new CreditCard(fee);
+    public CreditCard createProduct(Object... args) {
+        BigDecimal fee = (BigDecimal) args[0];
+        CreditCard creditCard = new CreditCard(fee);
+        creditCards.add(creditCard);
+        return creditCard;
+    }
+
+    public List<CreditCard> getProducts(){
+        return this.creditCards;
     }
 }

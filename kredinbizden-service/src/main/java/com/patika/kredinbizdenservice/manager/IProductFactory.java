@@ -1,7 +1,6 @@
 package com.patika.kredinbizdenservice.manager;
-
-import com.patika.kredinbizdenservice.model.Product;
-
-public interface IProductFactory {
-    Product createProduct();
+import java.util.List;
+public interface IProductFactory<T> {
+   T createProduct(Object... args);
+   List<T> getProducts();
 }

@@ -3,36 +3,47 @@ package com.patika.kredinbizdenservice.manager;
 import com.patika.kredinbizdenservice.enums.LoanType;
 import com.patika.kredinbizdenservice.model.ConsumerLoan;
 import com.patika.kredinbizdenservice.model.HouseLoan;
-import com.patika.kredinbizdenservice.model.Product;
+import com.patika.kredinbizdenservice.model.Loan;
 import com.patika.kredinbizdenservice.model.VehicleLoan;
+import java.util.List;
+import java.util.ArrayList;
 
 import java.math.BigDecimal;
 
-public class LoanFactory implements IProductFactory{
-    private BigDecimal amount;
-    private Integer installment;
-    private Double interestRate;
+public class LoanFactory implements IProductFactory<Loan>{
     private LoanType loanType;
+    private List<Loan> loans;
 
-    public LoanFactory(BigDecimal amount, Integer installment, Double interestRate, LoanType loanType) {
-        this.amount = amount;
-        this.installment = installment;
-        this.interestRate = interestRate;
+    public LoanFactory(LoanType loanType) {
         this.loanType = loanType;
+        this.loans = new ArrayList<>();
     }
 
     @Override
-    public Product createProduct() {
+    public Loan createProduct(Object... args) {
+        BigDecimal amount = (BigDecimal) args[0];
+        Integer installment = (Integer) args[1];
+        Double interestRate = (Double) args[2];
        switch(loanType){
         case KONUT_KREDISI:
-            return new HouseLoan(amount, installment, interestRate);
+            HouseLoan houseLoan = new HouseLoan(amount, installment, interestRate);
+            loans.add(houseLoan);
+            return houseLoan;  
         case IHTIYAC_KREDISI:
-            return new ConsumerLoan(amount, installment, interestRate);
+            ConsumerLoan consumerLoan = new ConsumerLoan(amount, installment, interestRate);
+            loans.add(consumerLoan);
+            return consumerLoan; 
         case ARAC_KREDISI:
-            return new VehicleLoan(amount, installment, interestRate);
+            VehicleLoan vehicleLoan = new VehicleLoan(amount, installment, interestRate);
+            loans.add(vehicleLoan);
+            return vehicleLoan; 
         default:
             throw new IllegalArgumentException("Invalid loan type");
         }
        }
+
+    public List<Loan> getProducts(){
+        return this.loans;
+    }
     
 }
