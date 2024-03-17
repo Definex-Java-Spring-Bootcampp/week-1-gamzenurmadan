@@ -103,4 +103,8 @@ public class User {
         applicationList.add(application);
     }
 
+    @Override
+    public String toString() {
+        return "User [name=" + this.getName() + ", surname=" + this.getSurname() + ", birthDate=" + this.getBirthDate()+ "]";
+    }
 }
